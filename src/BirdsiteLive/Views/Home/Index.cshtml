@@ -1,0 +1,32 @@
+﻿@using BirdsiteLive.Controllers;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>
+        <br />
+        bird.makeup is a Twitter to ActivityPub bridge.<br />
+        Find a Twitter account below:
+    </p>
+    
+    <form method="POST">
+        @*<div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>*@
+        <div class="form-group">
+            @*<label for="exampleInputPassword1">Password</label>*@
+            <input type="text" class="form-control col-8 col-sm-8 col-md-6 col-lg-4 mx-auto" id="handle" name="handle" autocomplete="off" placeholder="Twitter Handle">
+        </div>
+        <button type="submit" class="btn btn-primary">Show</button>
+    </form>
+
+
+    @*@if (HtmlHelperExtensions.IsDebug())
+    {
+        <a class="nav-link text-dark" asp-area="" asp-controller="Debuging" asp-action="Index">Debug</a>
+    }*@
+</div>

@@ -1,0 +1,78 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Configuration.GetSection("Instance")["Name"] - @ViewData["Title"]</title>
+    @if(ViewData["AlternateLink"] != null) 
+    {
+    <link href='@ViewData["AlternateLink"]' rel='alternate' type='application/activity+json'>
+    <meta content='@ViewData["AlternateLink"]' property="og:url" />
+    }
+    @if(ViewData["MetaDescription"] != null) 
+    {
+    <meta content='@ViewData["MetaDescription"]' name='description'>
+    <meta content='@ViewData["MetaDescription"]' property="og:description" />
+    }
+    @if(ViewData["MetaTitle"] != null) 
+    {
+    <meta content='@ViewData["MetaTitle"]' name='og:title'>
+    }
+    @if(ViewData["MetaImage"] != null) 
+    {
+    <meta content='@ViewData["MetaImage"]' property="og:image" />
+    }
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/birdsite.css" />
+    <link rel="stylesheet" href="~/css/pattern.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Configuration.GetSection("Instance")["Name"]</a>
+                @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>*@
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="wrapper-nodeinfo">
+            <div class="container container-nodeinfo">
+                @await Component.InvokeAsync("NodeInfo")
+            </div>
+        </div>
+        <div class="container">
+
+            <a href="https://sr.ht/~cloutier/bird.makeup/">Source Code</a> @*<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+
+            <a class="btn btn-primary" href="https://www.patreon.com/birddotmakeup" style="float: right; margin:10px;">Support us on Patreon</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

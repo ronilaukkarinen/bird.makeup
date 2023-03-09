@@ -1,0 +1,10 @@
+﻿@model BirdsiteLive.Component.NodeInfoViewModel
+
+<div>
+    <div class="node-progress-bar">
+        <div class="node-progress-bar__label">
+            <a asp-controller="About" asp-action="Index">Service load:</a>
+            @Math.Ceiling(ViewData.Model.SyncLag.TotalMinutes) minutes to fetch all twitter users 
+         </div>
+    </div>
+</div>
